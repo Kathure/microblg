@@ -15,18 +15,25 @@
 </head>
 
 <body>
-    <div>Microblog: <nav >
+    <div>Microblog:
+        <nav>
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/gallery">Gallery</a></li>
 
             </ul>
-        </nav></div>
-    <hr>
-    {% block content %}
-    {% endblock %}
-     <script src="/static/js/vendor/jquery.js"></script>
+        </nav>
+    </div>
+    <hr> {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endif %}
+
+    </ul>
+    {% endif %} {% endwith %} {% block content %}{% endblock %}
+    <script src="/static/js/vendor/jquery.js"></script>
     <script src="/static/js/vendor/what-input.js"></script>
     <script src="/static/js/vendor/foundation.js"></script>
     <script src="/static/js/app.js"></script>
